@@ -18,6 +18,15 @@
 		{
 			"Name": "ControlFlows",
 			"Enabled": true
+		},
+		{
+			"Name": "LambdaBrowser",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/7ec87319af84446e968c1e979b93b246"
+		},
+		{
+			"Name": "HttpBlueprint",
+			"Enabled": true
 		}
 	]
 }
