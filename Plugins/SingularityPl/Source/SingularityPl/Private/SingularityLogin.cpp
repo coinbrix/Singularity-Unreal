@@ -1,5 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Copyright Singularity, Neobrix 2023. All rights reserved.
 
 #include "SingularityLogin.h"
 #include "WebBrowser.h"
@@ -8,6 +7,8 @@
 #include "Async/Async.h"
 #include "Kismet/GameplayStatics.h"
 #include "Serialization/JsonSerializer.h"
+#include "Widgets/Layout/SBox.h"
+#include "Widgets/Text/STextBlock.h"
 
 #define LOCTEXT_NAMESPACE "SingularityLogin"
 
@@ -20,6 +21,7 @@ void USingularityLogin::startLogin()
     if ( WebBrowserWidget.IsValid())
     {
         WebBrowserWidget->LoadURL("https://mobile-sdk.s9y.gg/?api_key="+api_key+"&env_key="+env_key);
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("https://mobile-sdk.s9y.gg/?api_key="+api_key+"&env_key="+env_key));
     }
 }
 
@@ -87,7 +89,6 @@ void USingularityLogin::HandleOnUrlChanged(const FText& InText)
 void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FString& Source, int32 Line, EWebBrowserConsoleLogSeverity Severity)
 {
     if (Message.Contains("singularityLogoutEvent")) {
-        //        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Your Message"));
         USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
         SaveGameInstance->UserData = "";
         SaveGameInstance->NtfsData = "";

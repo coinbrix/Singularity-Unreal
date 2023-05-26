@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright Singularity, Neobrix 2023. All rights reserved.
 
 using UnrealBuildTool;
 
@@ -49,7 +49,42 @@ public class SingularityPl : ModuleRules
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
-		
+            
+		        if (Target.bBuildEditor == true)
+        {
+            //@TODO: UnrealEd Needed for the triangulation code used for sprites (but only in editor mode)
+            //@TOOD: Try to move the code dependent on the triangulation code to the editor-only module
+            PrivateIncludePathModuleNames.AddRange(
+                new string[]
+                {
+                        "UnrealEd",
+                }
+            );
+            PrivateDependencyModuleNames.AddRange(
+                new string[]
+                {
+                "EditorFramework",
+                        "UnrealEd",
+                }
+            );
+        }
+
+        if (Target.bBuildEditor || Target.Platform == UnrealTargetPlatform.Android || Target.Platform == UnrealTargetPlatform.IOS)
+        {
+            // WebBrowserTexture required for cooking Android
+            PrivateIncludePathModuleNames.AddRange(
+                new string[]
+                {
+                        "WebBrowserTexture",
+                }
+            );
+            PrivateDependencyModuleNames.AddRange(
+                new string[]
+                {
+                        "WebBrowserTexture",
+                }
+            );
+        }
 		
 		DynamicallyLoadedModuleNames.AddRange(
 			new string[]

@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright Singularity, Neobrix 2023. All rights reserved.
 
 #pragma once
 
