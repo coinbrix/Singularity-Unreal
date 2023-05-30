@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class SingularityPl : ModuleRules
+public class Singularity : ModuleRules
 {
-	public SingularityPl(ReadOnlyTargetRules Target) : base(Target)
+	public Singularity(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		

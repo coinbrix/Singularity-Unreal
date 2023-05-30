@@ -20,14 +20,6 @@
 			"TargetAllowList": [
 				"Editor"
 			]
-		},
-		{
-			"Name": "Singularity",
-			"Enabled": false
-		},
-		{
-			"Name": "SingularityP",
-			"Enabled": false
 		}
 	]
 }

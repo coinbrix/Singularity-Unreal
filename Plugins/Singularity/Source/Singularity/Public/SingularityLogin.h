@@ -10,7 +10,7 @@
  *
  */
 UCLASS(BlueprintType)
-class SINGULARITYPL_API USingularityLogin : public UWebBrowser
+class SINGULARITY_API USingularityLogin : public UWebBrowser
 {
     GENERATED_BODY()
 public:

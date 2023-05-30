@@ -2,9 +2,12 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-    "EngineVersion" : "5.2.0",
-    "WhitelistPlatforms": [ "Win64", "Mac" ],
-    "MarketplaceURL" : "com.epicgames.launcher://ue/marketplace/product/95a7bef8517d4cfb8d2d1f2eeb8a3650",
+	"EngineVersion": "5.2.0",
+	"WhitelistPlatforms": [
+		"Win64",
+		"Mac"
+	],
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/95a7bef8517d4cfb8d2d1f2eeb8a3650",
 	"FriendlyName": "Singularity",
 	"Description": "Singularity provide easy integration of authentecation in games",
 	"Category": "Other",
@@ -13,12 +16,12 @@
 	"DocsURL": "https://docs.s9y.gg/",
 	"SupportURL": "https://www.s9y.gg/",
 	"CanContainContent": true,
-	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": true,
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "SingularityPl",
+			"Name": "Singularity",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
@@ -26,6 +29,7 @@
 	"Plugins": [
 		{
 			"Name": "WebBrowserWidget",
+			"Type": "Runtime",
 			"Enabled": true
 		}
 	]

@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FSingularityPlModule : public IModuleInterface
+class FSingularityModule : public IModuleInterface
 {
 public:
 

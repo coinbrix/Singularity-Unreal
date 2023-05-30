@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class SINGULARITYPL_API USingularitySaveGame : public USaveGame
+class SINGULARITY_API USingularitySaveGame : public USaveGame
 {
 	GENERATED_BODY()
     
