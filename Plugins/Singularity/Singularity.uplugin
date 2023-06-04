@@ -7,6 +7,10 @@
 		"Win64",
 		"Mac"
 	],
+ "SupportedTargetPlatforms": [
+        "Win64",
+        "Mac"
+    ],
 	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/95a7bef8517d4cfb8d2d1f2eeb8a3650",
 	"FriendlyName": "Singularity",
 	"Description": "Singularity provide easy integration of authentecation in games",

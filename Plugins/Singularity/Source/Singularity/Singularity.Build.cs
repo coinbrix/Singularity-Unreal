@@ -92,5 +92,10 @@ public class Singularity : ModuleRules
 				// ... add any modules that your module loads dynamically here ...
 			}
 			);
+   //make sure this is compiled for binary builds
+        if (Target.Configuration != UnrealTargetConfiguration.Shipping)
+        {
+            PrecompileForTargets = PrecompileTargetsType.Any;
+        }
 	}
 }
