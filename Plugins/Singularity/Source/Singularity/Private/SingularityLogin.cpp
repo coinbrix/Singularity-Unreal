@@ -9,12 +9,12 @@
 #include "Serialization/JsonSerializer.h"
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/Text/STextBlock.h"
+#include "SingularitySaveGame.h"
 
 #define LOCTEXT_NAMESPACE "SingularityLogin"
 
 void USingularityLogin::startLogin()
 {
-    //    WebBrowserWidget->
     USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
     SaveGameInstance->SaveSlotName = "Singularity";
     UGameplayStatics::SaveGameToSlot(SaveGameInstance, SaveGameInstance->SaveSlotName, 0);
@@ -30,6 +30,15 @@ void USingularityLogin::openDrawer()
     if (WebBrowserWidget.IsValid())
     {
         return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.open();");
+    }
+}
+
+void USingularityLogin::customLogin(const FString& loginPlatform, const FString& accessToken, const FString& idToken)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.customAuth(\""+loginPlatform+"\",\""+accessToken+"\",\""+idToken+"\")"));
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.customAuth(\""+loginPlatform+"\",\""+accessToken+"\",\""+idToken+"\")");
     }
 }
 
