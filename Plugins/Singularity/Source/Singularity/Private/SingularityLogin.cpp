@@ -21,7 +21,8 @@ void USingularityLogin::startLogin()
     if ( WebBrowserWidget.IsValid())
     {
         WebBrowserWidget->LoadURL("https://mobile-sdk.s9y.gg/?api_key="+api_key+"&env_key="+env_key);
-//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("https://mobile-sdk.s9y.gg/?api_key="+api_key+"&env_key="+env_key));
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("******https://mobile-sdk.s9y.gg/?api_key="+api_key+"&env_key="+env_key));
+        
     }
 }
 
@@ -130,7 +131,15 @@ void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FSt
         SaveGameInstance->NtfsData = Message;
         UGameplayStatics::SaveGameToSlot(SaveGameInstance, SaveGameInstance->SaveSlotName, 0);
         OnNftsRecieved.Broadcast(Message);
-    } else  {
+    } else if (Message.Contains("singularityInitCallback"))  {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Message);
+        OnSingularityInitCallback.Broadcast(Message);
+    } else if (Message.Contains("fetchMetaData")) {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Message);
+//        USingularityLogin::openDrawer();
+        OnSingularityInitCallback.Broadcast(Message);
+    } else {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Message);
         OnConsoleMessage.Broadcast(Message, Source, Line);
     }
 }

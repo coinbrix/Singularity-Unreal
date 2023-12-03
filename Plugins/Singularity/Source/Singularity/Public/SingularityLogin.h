@@ -19,6 +19,7 @@ public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularitySocialLogin, const FString&, Text);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularityLogout, const FString&, Text);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNftsRecieved, const FString&, Text);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularityInit, const FString&, Text);
     
     UPROPERTY(BlueprintReadWrite, Category = "Singularity Login|Key")
     FString api_key;
@@ -56,6 +57,8 @@ public:
     UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
     FOnNftsRecieved OnNftsRecieved ;
     
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularityInit OnSingularityInitCallback ;
     
 protected:
     virtual TSharedRef<SWidget> RebuildWidget() override;
