@@ -122,7 +122,7 @@ void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FSt
             // Get the value of the json object by field name
             TSharedPtr<FJsonObject> GetField = JsonObject->GetObjectField("onSocialLoginButtonClicked");
             FString name = GetField->GetStringField("socialLoginType");
-            FString url = "https://auth0.s9y-sandbox.gg?platform=android&appId=unreal&loginMethod="+name;
+            FString url = "https://auth0.s9y.gg?platform=android&appId=unreal&loginMethod="+name;
             OnSingularitySocailLogin.Broadcast(url);
         }
     } else if (Message.Contains("ownedNfts")) {
@@ -130,7 +130,7 @@ void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FSt
         SaveGameInstance->NtfsData = Message;
         UGameplayStatics::SaveGameToSlot(SaveGameInstance, "SingularityData", 0);
         OnNftsRecieved.Broadcast(Message);
-    } else if (Message.Contains("singularityInitCallback"))  {
+    } else if (Message.Contains("singularityInitCallback") || Message.Contains("fetchMetaData"))  {
         OnSingularityInitCallback.Broadcast(Message);
     } else {
         OnConsoleMessage.Broadcast(Message, Source, Line);
