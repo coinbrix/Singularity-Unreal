@@ -46,10 +46,10 @@ void USingularityLogin::customLogin(const FString& loginPlatform, const FString&
 FString USingularityLogin::getNtfsData()
 {
     USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
-    SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameInstance->SaveSlotName, 0));
+    SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::LoadGameFromSlot("SingularityData", 0));
     if (!SaveGameInstance)
     {
-        return "";
+        return "NO NFTS FOUND";
     }
     return SaveGameInstance->NtfsData;
 }
@@ -57,7 +57,7 @@ FString USingularityLogin::getNtfsData()
 FString USingularityLogin::getUserData()
 {
     USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
-    SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::LoadGameFromSlot(SaveGameInstance->SaveSlotName, 0));
+    SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::LoadGameFromSlot("SingularityData", 0));
     if(!SaveGameInstance) {
         return "";
     }
@@ -107,14 +107,13 @@ void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FSt
     } else if (Message.Contains("singularityUserInfo")) {
         USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
         SaveGameInstance->UserData = Message;
-        UGameplayStatics::SaveGameToSlot(SaveGameInstance, SaveGameInstance->SaveSlotName, 0);
+        UGameplayStatics::SaveGameToSlot(SaveGameInstance, "SingularityData", 0);
         OnSingularityLogin.Broadcast(Message);
     } else if (Message.Contains("singularityCloseEvent")) {
         OnSingularityClose.Broadcast(Message);
     } else if (Message.Contains("onSocialLoginButtonClicked")) {
         // Array of json objects at top level of json
         TSharedPtr<FJsonObject> JsonObject;
-        
         // Create a reader pointer to read the json data
         TSharedRef<TJsonReader<TCHAR>> Reader = TJsonReaderFactory<TCHAR>::Create(Message);
         
@@ -129,17 +128,11 @@ void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FSt
     } else if (Message.Contains("ownedNfts")) {
         USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
         SaveGameInstance->NtfsData = Message;
-        UGameplayStatics::SaveGameToSlot(SaveGameInstance, SaveGameInstance->SaveSlotName, 0);
+        UGameplayStatics::SaveGameToSlot(SaveGameInstance, "SingularityData", 0);
         OnNftsRecieved.Broadcast(Message);
     } else if (Message.Contains("singularityInitCallback"))  {
-//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Message);
-        OnSingularityInitCallback.Broadcast(Message);
-    } else if (Message.Contains("fetchMetaData")) {
-//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Message);
-//        USingularityLogin::openDrawer();
         OnSingularityInitCallback.Broadcast(Message);
     } else {
-//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, Message);
         OnConsoleMessage.Broadcast(Message, Source, Line);
     }
 }
