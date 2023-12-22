@@ -34,6 +34,9 @@ public:
     void customLogin(const FString& loginPlatform, const FString& accessToken, const FString& idToken);
     
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void initiateTransaction(const FString& transactionJson);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
     void openDrawer();
     
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")

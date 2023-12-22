@@ -43,6 +43,16 @@ void USingularityLogin::customLogin(const FString& loginPlatform, const FString&
     }
 }
 
+void USingularityLogin::initiateTransaction(const FString& transactionJson)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.transactionFlow(\""+transactionJson+"\")"));
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.transactionFlow(\""+transactionJson+"\")");
+    }
+}
+
+
 FString USingularityLogin::getNtfsData()
 {
     USingularitySaveGame* SaveGameInstance = Cast<USingularitySaveGame>(UGameplayStatics::CreateSaveGameObject(USingularitySaveGame::StaticClass()));
