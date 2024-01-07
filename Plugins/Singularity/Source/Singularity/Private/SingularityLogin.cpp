@@ -48,8 +48,8 @@ void USingularityLogin::initiateTransaction(const FString& transactionJson)
     if (WebBrowserWidget.IsValid())
     {
 //        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.transactionFlow(\""+transactionJson+"\")"));
-//        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.transactionFlow('"+transactionJson+"')"), "", 0);
-        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.transactionFlow('"+transactionJson+"')");
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.transactionFlow("+transactionJson+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.transactionFlow(JSON.stringify("+transactionJson+"))");
     }
 }
 
