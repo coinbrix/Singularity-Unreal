@@ -48,11 +48,99 @@ void USingularityLogin::initiateTransaction(const FString& transactionJson)
     if (WebBrowserWidget.IsValid())
     {
 //        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.transactionFlow(\""+transactionJson+"\")"));
-        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.transactionFlow("+transactionJson+")"), "", 0);
         return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.transactionFlow(JSON.stringify("+transactionJson+"))");
     }
 }
 
+void USingularityLogin::signTransaction(const FString& transactionJson)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.signTransaction(\""+transactionJson+"\")"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.signTransaction("+transactionJson+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.signTransaction(JSON.stringify("+transactionJson+"))");
+    }
+}
+
+void USingularityLogin::signAndSendTransaction(const FString& transactionJson)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.signAndSendTransaction(\""+transactionJson+"\")"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.signAndSendTransaction("+transactionJson+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.signAndSendTransaction(JSON.stringify("+transactionJson+"))");
+    }
+}
+
+void USingularityLogin::sendNonNativeToken(const FString& transactionJson)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.sendNonNativeToken(\""+transactionJson+"\")"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.sendNonNativeToken("+transactionJson+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.sendNonNativeToken(JSON.stringify("+transactionJson+"))");
+    }
+}
+
+void USingularityLogin::sendNft(const FString& transactionJson)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.sendNft(\""+transactionJson+"\")"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.sendNft("+transactionJson+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.sendNft(JSON.stringify("+transactionJson+"))");
+    }
+}
+
+void USingularityLogin::requestTypedSignature(const FString& domainJson, const FString& typeJson, const FString& messageJson, const FString& primaryType)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+////        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.requestTypedSignature(\""+domainJson+typeJson+messageJson+primaryType+"\")"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.requestTypedSignature("+domainJson+typeJson+messageJson+primaryType+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.requestTypedSignature(JSON.stringify("+domainJson+"), JSON.stringify("+typeJson+"), JSON.stringify("+messageJson+"), " +primaryType+")");
+    }
+}
+
+void USingularityLogin::requestPersonalSignature(const FString& message)
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.requestPersonalSignature(\""+message+"\")"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.requestPersonalSignature("+message+")"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.requestPersonalSignature("+message+")");
+    }
+}
+
+void USingularityLogin::getConnectUserInfo()
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.getConnectUserInfo()"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.getConnectUserInfo()"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.getConnectUserInfo()");
+    }
+}
+
+void USingularityLogin::logOut()
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.logOut()"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.logOut()"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.logOut()");
+    }
+}
+
+void USingularityLogin::close()
+{
+    if (WebBrowserWidget.IsValid())
+    {
+//        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.close()"));
+        OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.close()"), "", 0);
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.close()");
+    }
+}
 
 FString USingularityLogin::getNtfsData()
 {

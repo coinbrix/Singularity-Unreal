@@ -37,6 +37,33 @@ public:
     void initiateTransaction(const FString& transactionJson);
     
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void requestPersonalSignature(const FString& message);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void requestTypedSignature(const FString& domainJson, const FString& typeJson, const FString& messageJson, const FString& primaryType);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void sendNft(const FString& transactionJson);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void sendNonNativeToken(const FString& transactionJson);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void signAndSendTransaction(const FString& transactionJson);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void signTransaction(const FString& transactionJson);
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void close();
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void logOut();
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
+    void getConnectUserInfo();
+    
+    UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
     void openDrawer();
     
     UFUNCTION(BlueprintCallable, meta = (Keywords = "Singularity Login"), Category = "Singularity")
