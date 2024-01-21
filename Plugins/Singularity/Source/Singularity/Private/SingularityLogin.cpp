@@ -108,7 +108,7 @@ void USingularityLogin::requestPersonalSignature(const FString& message)
     {
 //        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.requestPersonalSignature(\""+message+"\")"));
         OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.requestPersonalSignature("+message+")"), "", 0);
-        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.requestPersonalSignature("+message+")");
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.requestPersonalSignature('"+message+"')");
     }
 }
 
