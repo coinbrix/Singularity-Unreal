@@ -78,7 +78,7 @@ void USingularityLogin::sendNonNativeToken(const FString& transactionJson)
     {
 //        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.sendNonNativeToken(\""+transactionJson+"\")"));
         OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.sendNonNativeToken("+transactionJson+")"), "", 0);
-        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.sendNonNativeToken(JSON.stringify("+transactionJson+"))");
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.sendNonNativeToken("+transactionJson+")");
     }
 }
 
@@ -88,7 +88,7 @@ void USingularityLogin::sendNft(const FString& transactionJson)
     {
 //        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("window.SingularityEvent.sendNft(\""+transactionJson+"\")"));
         OnConsoleMessage.Broadcast(TEXT("window.SingularityEvent.sendNft("+transactionJson+")"), "", 0);
-        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.sendNft(JSON.stringify("+transactionJson+"))");
+        return WebBrowserWidget->ExecuteJavascript("window.SingularityEvent.sendNft("+transactionJson+")");
     }
 }
 
@@ -231,6 +231,18 @@ void USingularityLogin::HandleOnConsoleMessage(const FString& Message, const FSt
         OnNftsRecieved.Broadcast(Message);
     } else if (Message.Contains("singularityInitCallback") || Message.Contains("fetchMetaData"))  {
         OnSingularityInitCallback.Broadcast(Message);
+    } else if (Message.Contains("requestPersonalSignature")) {
+        OnSingularityRequestPersonalSignatureCallback.Broadcast(Message);
+    } else if (Message.Contains("signTransaction")) {
+        OnSingularitySignTransactionCallback.Broadcast(Message);
+    } else if (Message.Contains("signAndSendTransaction")) {
+        OnSingularitySignAndSendTransactionCallback.Broadcast(Message);
+    } else if (Message.Contains("sendNonNativeToken")) {
+        OnSingularitySendNonNativeTokenCallback.Broadcast(Message);
+    } else if (Message.Contains("sendNft")) {
+        OnSingularitySendNftCallback.Broadcast(Message);
+    } else if (Message.Contains("requestTypedSignature")) {
+        OnSingularityRequestTypedSignatureCallback.Broadcast(Message);
     } else {
         OnConsoleMessage.Broadcast(Message, Source, Line);
     }

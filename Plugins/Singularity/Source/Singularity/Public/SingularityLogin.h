@@ -20,7 +20,13 @@ public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularityLogout, const FString&, Text);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNftsRecieved, const FString&, Text);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularityInit, const FString&, Text);
-    
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularityRequestPersonalSignature, const FString&, Text);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularitySignTransaction, const FString&, Text);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularitySignAndSendTransaction, const FString&, Text);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularitySendNonNativeToken, const FString&, Text);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularitySendNft, const FString&, Text);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSingularityRequestTypedSignature, const FString&, Text);
+
     UPROPERTY(BlueprintReadWrite, Category = "Singularity Login|Key")
     FString api_key;
     UPROPERTY(BlueprintReadWrite, Category = "Singularity Login|Key")
@@ -90,6 +96,24 @@ public:
     UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
     FOnSingularityInit OnSingularityInitCallback ;
     
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularityRequestPersonalSignature OnSingularityRequestPersonalSignatureCallback;
+    
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularitySignTransaction OnSingularitySignTransactionCallback;
+    
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularitySignAndSendTransaction OnSingularitySignAndSendTransactionCallback;
+    
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularitySendNonNativeToken OnSingularitySendNonNativeTokenCallback;
+    
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularitySendNft OnSingularitySendNftCallback;
+    
+    UPROPERTY(BlueprintAssignable, Category = "Singularity Login|Event")
+    FOnSingularityRequestTypedSignature OnSingularityRequestTypedSignatureCallback;
+        
 protected:
     virtual TSharedRef<SWidget> RebuildWidget() override;
     void HandleOnConsoleMessage(const FString& Message, const FString& Source, int32 Line, EWebBrowserConsoleLogSeverity Severity);
